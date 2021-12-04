@@ -10,13 +10,13 @@ fun main() {
             .fold(Triple(0, 0, 0)) { acc, (direction, value) ->
                 when (direction) {
                     "forward" -> {
-                        Triple(acc.first + value.toInt(), acc.second + acc.third * value.toInt(), acc.third)
+                        acc.copy(first = acc.first + value.toInt(), second = acc.second + acc.third * value.toInt())
                     }
                     "down" -> {
-                        Triple(acc.first, acc.second, acc.third + value.toInt())
+                        acc.copy(third = acc.third + value.toInt())
                     }
                     "up" -> {
-                        Triple(acc.first, acc.second, acc.third - value.toInt())
+                        acc.copy(third = acc.third - value.toInt())
                     }
                     else -> error("no other option could fit here")
                 }
