@@ -1,6 +1,9 @@
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
+import kotlin.math.ceil
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 /**
  * Reads lines from the given input txt file.
@@ -24,3 +27,9 @@ fun List<Int>.median(): Int =
             sortedList[sortedList.size / 2]
         }
     }
+
+fun List<Int>.meanAsInts(): IntArray  =
+    (sum().toFloat() / size).let { mean -> intArrayOf(floor(mean).toInt(), ceil(mean).toInt()) }
+
+fun Int.triangularNumber(): Int =
+    (this downTo 1).fold(0) { acc, number -> acc + number }
