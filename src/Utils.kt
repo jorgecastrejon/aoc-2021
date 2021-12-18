@@ -19,6 +19,8 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
 
 fun String.toDecimal(): Int = Integer.parseInt(this, 2)
 
+fun String.toLongDecimal(): Long = toLong(2)
+
 fun List<Int>.median(): Int =
     sorted().let { sortedList ->
         if (sortedList.size % 2 == 0) {
@@ -36,3 +38,10 @@ fun Int.triangularNumber(): Int =
 
 val Char.intValue: Int
     get() = Character.getNumericValue(this)
+
+fun Char.toBinary(): String {
+    val number = Integer.parseInt(this.toString(), 16)
+    val binary = Integer.toBinaryString(number)
+
+    return ((binary.length until 4).map { "0" } + binary).joinToString("")
+}
