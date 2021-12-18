@@ -28,8 +28,11 @@ fun List<Int>.median(): Int =
         }
     }
 
-fun List<Int>.meanAsInts(): IntArray  =
+fun List<Int>.meanAsInts(): IntArray =
     (sum().toFloat() / size).let { mean -> intArrayOf(floor(mean).toInt(), ceil(mean).toInt()) }
 
 fun Int.triangularNumber(): Int =
     (this downTo 1).fold(0) { acc, number -> acc + number }
+
+val Char.intValue: Int
+    get() = Character.getNumericValue(this)
